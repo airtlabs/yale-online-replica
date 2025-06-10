@@ -5,100 +5,126 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { 
-  BookOpen, 
+  Home, 
   Users, 
   Award, 
   Clock, 
   Star,
   ArrowRight,
   Play,
-  CheckCircle
+  CheckCircle,
+  Palette,
+  Sofa,
+  Lightbulb,
+  Camera,
+  Ruler,
+  Hammer
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Index = () => {
-  const featuredCourses = [
+  const services = [
+    {
+      icon: Palette,
+      title: "Interior Design",
+      description: "Complete interior design solutions for residential and commercial spaces"
+    },
+    {
+      icon: Sofa,
+      title: "Furniture Design",
+      description: "Custom furniture design and manufacturing to fit your style and space"
+    },
+    {
+      icon: Lightbulb,
+      title: "Lighting Design",
+      description: "Innovative lighting solutions to enhance ambiance and functionality"
+    },
+    {
+      icon: Ruler,
+      title: "Space Planning",
+      description: "Optimal space utilization with smart planning and layout design"
+    },
+    {
+      icon: Hammer,
+      title: "Renovation",
+      description: "Complete home and office renovation with modern design concepts"
+    },
+    {
+      icon: Camera,
+      title: "3D Visualization",
+      description: "Realistic 3D renders to help you visualize your dream space"
+    }
+  ];
+
+  const projects = [
     {
       id: 1,
-      title: "Introduction to Data Science",
-      instructor: "Dr. Sarah Johnson",
-      duration: "12 weeks",
-      students: 2450,
-      rating: 4.8,
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop",
-      price: "$299",
-      level: "Beginner"
+      title: "Modern Living Room",
+      category: "Residential",
+      image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop",
+      description: "Contemporary design with elegant furniture and lighting"
     },
     {
       id: 2,
-      title: "Advanced Machine Learning",
-      instructor: "Prof. Michael Chen",
-      duration: "16 weeks",
-      students: 1850,
-      rating: 4.9,
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=250&fit=crop",
-      price: "$399",
-      level: "Advanced"
+      title: "Luxury Bedroom",
+      category: "Residential",
+      image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop",
+      description: "Luxurious bedroom design with custom wardrobe solutions"
     },
     {
       id: 3,
-      title: "Web Development Bootcamp",
-      instructor: "Alex Rodriguez",
-      duration: "20 weeks",
-      students: 3200,
-      rating: 4.7,
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=250&fit=crop",
-      price: "$249",
-      level: "Intermediate"
+      title: "Modern Kitchen",
+      category: "Residential",
+      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop",
+      description: "Sleek modular kitchen with smart storage solutions"
+    },
+    {
+      id: 4,
+      title: "Office Space",
+      category: "Commercial",
+      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop",
+      description: "Professional office design promoting productivity and comfort"
     }
   ];
 
   const stats = [
-    { icon: Users, value: "50,000+", label: "Students Enrolled" },
-    { icon: BookOpen, value: "200+", label: "Courses Available" },
-    { icon: Award, value: "95%", label: "Completion Rate" },
-    { icon: Star, value: "4.8", label: "Average Rating" }
+    { icon: Users, value: "500+", label: "Happy Clients" },
+    { icon: Home, value: "1000+", label: "Projects Completed" },
+    { icon: Award, value: "15+", label: "Years Experience" },
+    { icon: Star, value: "4.9", label: "Client Rating" }
   ];
 
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="hero-gradient text-white py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-gray-900 text-white py-20 lg:py-32">
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&h=800&fit=crop')"
+          }}
+        ></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in-up">
               <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
-                Learn Skills That
-                <span className="block text-blue-200">Matter Today</span>
+                Transform Your
+                <span className="block text-primary">Dream Space</span>
               </h1>
-              <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-lg">
-                Join thousands of learners advancing their careers with our 
-                world-class online courses and expert instruction.
+              <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-lg">
+                Expert interior design services that bring luxury, comfort, 
+                and functionality to your home and office spaces.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-white text-primary hover:bg-gray-100 text-lg px-8">
+                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 text-lg px-8">
                   <Play className="mr-2 h-5 w-5" />
-                  Start Learning
+                  Start Your Project
                 </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary text-lg px-8">
-                  Explore Courses
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 text-lg px-8">
+                  View Portfolio
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-              </div>
-            </div>
-            <div className="animate-float hidden lg:block">
-              <div className="relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=600&h=400&fit=crop" 
-                  alt="Online Learning"
-                  className="rounded-lg shadow-2xl"
-                />
-                <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg">
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle className="h-6 w-6 text-green-500" />
-                    <span className="text-gray-800 font-semibold">Certificate Ready</span>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -122,72 +148,134 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Featured Courses */}
+      {/* Services Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Featured Courses
+              Our Services
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Discover our most popular courses designed to help you achieve your goals
+              Comprehensive interior design solutions tailored to your unique style and requirements
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredCourses.map((course) => (
-              <Card key={course.id} className="group hover:shadow-xl transition-shadow duration-300">
-                <div className="aspect-video relative overflow-hidden rounded-t-lg">
+            {services.map((service, index) => (
+              <Card key={index} className="group hover:shadow-luxury transition-all duration-300 hover:-translate-y-2">
+                <CardHeader className="text-center">
+                  <div className="flex justify-center mb-4">
+                    <service.icon className="h-12 w-12 text-primary group-hover:scale-110 transition-transform" />
+                  </div>
+                  <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                    {service.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-center text-gray-600">
+                    {service.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Projects */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Featured Projects
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Explore our latest interior design projects showcasing creativity and excellence
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            {projects.map((project) => (
+              <Card key={project.id} className="group hover:shadow-luxury transition-all duration-300 overflow-hidden">
+                <div className="aspect-[4/3] relative overflow-hidden">
                   <img 
-                    src={course.image} 
-                    alt={course.title}
+                    src={project.image} 
+                    alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <Badge className="absolute top-4 left-4 bg-white text-primary">
-                    {course.level}
+                  <Badge className="absolute top-4 left-4 bg-primary text-white">
+                    {project.category}
                   </Badge>
                 </div>
                 <CardHeader>
-                  <div className="flex justify-between items-start mb-2">
-                    <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                      {course.title}
-                    </CardTitle>
-                    <span className="text-2xl font-bold text-primary">{course.price}</span>
-                  </div>
+                  <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                    {project.title}
+                  </CardTitle>
                   <CardDescription className="text-gray-600">
-                    By {course.instructor}
+                    {project.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-                    <div className="flex items-center">
-                      <Clock className="h-4 w-4 mr-1" />
-                      {course.duration}
-                    </div>
-                    <div className="flex items-center">
-                      <Users className="h-4 w-4 mr-1" />
-                      {course.students.toLocaleString()}
-                    </div>
-                    <div className="flex items-center">
-                      <Star className="h-4 w-4 mr-1 fill-yellow-400 text-yellow-400" />
-                      {course.rating}
-                    </div>
-                  </div>
-                  <Button className="w-full group-hover:bg-primary group-hover:text-white transition-colors">
-                    Enroll Now
-                  </Button>
-                </CardContent>
               </Card>
             ))}
           </div>
 
           <div className="text-center mt-12">
-            <Link to="/courses">
+            <Link to="/portfolio">
               <Button size="lg" variant="outline" className="text-lg px-8">
-                View All Courses
+                View All Projects
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Why Choose DLife Interiors?
+              </h2>
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-lg">Expert Design Team</h3>
+                    <p className="text-gray-600">Experienced designers with creative vision and technical expertise</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-lg">Quality Materials</h3>
+                    <p className="text-gray-600">Premium quality materials and finishes for lasting beauty</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-lg">Timely Delivery</h3>
+                    <p className="text-gray-600">On-time project completion with transparent communication</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-lg">Budget-Friendly</h3>
+                    <p className="text-gray-600">Competitive pricing without compromising on quality</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="animate-float">
+              <img 
+                src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&h=400&fit=crop" 
+                alt="Interior Design Process"
+                className="rounded-lg shadow-luxury"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -196,14 +284,19 @@ const Index = () => {
       <section className="bg-primary text-white py-20">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Start Your Learning Journey?
+            Ready to Transform Your Space?
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Join thousands of students who have transformed their careers with our courses
+          <p className="text-xl text-orange-100 mb-8">
+            Let's bring your vision to life with our expert interior design services
           </p>
-          <Button size="lg" className="bg-white text-primary hover:bg-gray-100 text-lg px-8">
-            Get Started Today
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="bg-white text-primary hover:bg-gray-100 text-lg px-8">
+              Get Free Consultation
+            </Button>
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary text-lg px-8">
+              Call Now: +91 98765 43210
+            </Button>
+          </div>
         </div>
       </section>
     </Layout>
