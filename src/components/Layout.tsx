@@ -33,7 +33,7 @@ const Layout = ({ children }: LayoutProps) => {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
-                <span>info@dlifeinteriors.com</span>
+                <span>info@bluetaare.com</span>
               </div>
             </div>
             <div className="flex items-center space-x-2">
@@ -51,7 +51,7 @@ const Layout = ({ children }: LayoutProps) => {
             <div className="flex items-center">
               <Link to="/" className="flex items-center space-x-2">
                 <Home className="h-8 w-8 text-primary" />
-                <span className="font-bold text-2xl text-foreground">DLife Interiors</span>
+                <span className="font-bold text-2xl text-foreground">Blue Taare</span>
               </Link>
             </div>
 
@@ -118,7 +118,7 @@ const Layout = ({ children }: LayoutProps) => {
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
                 <Home className="h-8 w-8 text-primary" />
-                <span className="font-bold text-xl">DLife Interiors</span>
+                <span className="font-bold text-xl">Blue Taare</span>
               </div>
               <p className="text-gray-400 mb-4 max-w-md">
                 Creating beautiful, functional spaces that reflect your personality 
@@ -149,7 +149,7 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 DLife Interiors. All rights reserved.</p>
+            <p>&copy; 2024 Blue Taare. All rights reserved.</p>
           </div>
         </div>
       </footer>
