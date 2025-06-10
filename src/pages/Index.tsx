@@ -20,6 +20,56 @@ import {
   Hammer
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import "keen-slider/keen-slider.min.css";
+import { useKeenSlider } from "keen-slider/react";
+import { motion } from "framer-motion"; // npm install framer-motion
+
+const sliderImages = [
+  {
+    src: "https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=900&h=600&fit=crop",
+    alt: "Elegant Living Room",
+    caption: "Elegant Living Room"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=900&h=600&fit=crop",
+    alt: "Modern Kitchen",
+    caption: "Modern Kitchen"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=900&h=600&fit=crop",
+    alt: "Luxury Bedroom",
+    caption: "Luxury Bedroom"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1460518451285-97b6aa326961?w=900&h=600&fit=crop",
+    alt: "Creative Workspace",
+    caption: "Creative Workspace"
+  }
+];
+
+const heroSlides = [
+  {
+    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&h=800&fit=crop",
+    product: "https://pngimg.com/d/sofa_PNG6954.png", // Example PNG product
+    heading: "Transform Your Dream Space",
+    subheading: "Expert interior design services that bring luxury, comfort, and functionality to your home and office spaces.",
+    cta: "Start Your Project"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200&h=800&fit=crop",
+    product: "https://pngimg.com/d/armchair_PNG7042.png",
+    heading: "Modern Designs, Timeless Appeal",
+    subheading: "From concept to completion, we create spaces that inspire and delight.",
+    cta: "View Portfolio"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=1200&h=800&fit=crop",
+    product: "https://pngimg.com/d/lamp_PNG101453.png",
+    heading: "Luxury Meets Functionality",
+    subheading: "Personalized solutions for every lifestyle and business need.",
+    cta: "Get Free Consultation"
+  }
+];
 
 const Index = () => {
   const services = [
@@ -93,40 +143,103 @@ const Index = () => {
     { icon: Star, value: "4.9", label: "Client Rating" }
   ];
 
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+    loop: true,
+    mode: "snap",
+    slides: { perView: 1, spacing: 16 },
+    breakpoints: {
+      "(min-width: 640px)": { slides: { perView: 1.2, spacing: 24 } },
+      "(min-width: 1024px)": { slides: { perView: 1.5, spacing: 32 } },
+    },
+  });
+
+  const [heroSliderRef, heroSlider] = useKeenSlider<HTMLDivElement>(
+    {
+      loop: true,
+      slides: { perView: 1 },
+      drag: true,
+    },
+    [
+      (slider) => {
+        let timeout: ReturnType<typeof setTimeout>;
+        let mouseOver = false;
+        function clearNextTimeout() {
+          clearTimeout(timeout);
+        }
+        function nextTimeout() {
+          clearTimeout(timeout);
+          if (mouseOver) return;
+          timeout = setTimeout(() => {
+            slider.next();
+          }, 4000);
+        }
+        slider.on("created", () => {
+          slider.container.addEventListener("mouseover", () => {
+            mouseOver = true;
+            clearNextTimeout();
+          });
+          slider.container.addEventListener("mouseout", () => {
+            mouseOver = false;
+            nextTimeout();
+          });
+          nextTimeout();
+        });
+        slider.on("dragStarted", clearNextTimeout);
+        slider.on("animationEnded", nextTimeout);
+        slider.on("updated", nextTimeout);
+      },
+    ]
+  );
+
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative bg-gray-900 text-white py-20 lg:py-32">
-        <div className="absolute inset-0 bg-black/50"></div>
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&h=800&fit=crop')"
-          }}
-        ></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in-up">
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
-                Transform Your
-                <span className="block text-primary">Dream Space</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-lg">
-                Expert interior design services that bring luxury, comfort, 
-                and functionality to your home and office spaces.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 text-lg px-8">
-                  <Play className="mr-2 h-5 w-5" />
-                  Start Your Project
-                </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 text-lg px-8">
-                  View Portfolio
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </div>
-            </div>
-          </div>
+      {/* Hero Section with Interior Design Video Background */}
+      <section className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden">
+        {/* Video Background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          poster="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&h=800&fit=crop"
+        >
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-modern-luxury-living-room-1176-large.mp4" type="video/mp4" />
+          {/* Free stock video from mixkit.co, replace with your own if needed */}
+        </video>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-black/60 to-black/80 z-10" />
+
+        {/* Centered Content */}
+        <div className="relative z-20 w-full max-w-2xl px-4 flex flex-col items-center text-center">
+          <motion.h1
+            className="text-3xl md:text-6xl font-bold text-white drop-shadow-lg mb-6"
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+          >
+            Transform Your Dream Space
+          </motion.h1>
+          <motion.p
+            className="text-lg md:text-2xl text-gray-200 mb-8 max-w-xl mx-auto"
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+          >
+            Expert interior design services that bring luxury, comfort, and functionality to your home and office spaces.
+          </motion.p>
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+          >
+            <Button
+              size="lg"
+              className="bg-white text-primary hover:bg-primary hover:text-white text-lg px-8 font-bold shadow-xl"
+            >
+              Start Your Project
+            </Button>
+          </motion.div>
         </div>
       </section>
 
@@ -275,6 +388,36 @@ const Index = () => {
                 className="rounded-lg shadow-luxury"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Slider Carousel Section */}
+      <section className="py-12 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+              Inspiration Gallery
+            </h2>
+            <p className="text-lg text-gray-600">
+              Discover stunning spaces designed by Blue Taare
+            </p>
+          </div>
+          <div ref={sliderRef} className="keen-slider rounded-xl shadow-luxury overflow-hidden">
+            {sliderImages.map((img, idx) => (
+              <div
+                key={idx}
+                className="keen-slider__slide flex flex-col items-center justify-center bg-gray-100"
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full h-80 object-cover rounded-xl"
+                  style={{ boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.15)" }}
+                />
+                <div className="mt-4 text-xl font-semibold text-primary">{img.caption}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
