@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
@@ -342,51 +343,125 @@ const Index = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Why Choose Blue Taare?
-              </h2>
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-lg">Expert Design Team</h3>
-                    <p className="text-gray-600">Experienced designers with creative vision and technical expertise</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-lg">Quality Materials</h3>
-                    <p className="text-gray-600">Premium quality materials and finishes for lasting beauty</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-lg">Timely Delivery</h3>
-                    <p className="text-gray-600">On-time project completion with transparent communication</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-lg">Budget-Friendly</h3>
-                    <p className="text-gray-600">Competitive pricing without compromising on quality</p>
-                  </div>
-                </div>
+          <div className="text-center mb-16">
+            <motion.h2 
+              className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Why Choose Blue Taare?
+            </motion.h2>
+            <motion.p 
+              className="text-xl text-gray-600 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              Experience excellence in interior design with our professional team and proven track record
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left Side - Benefits */}
+            <motion.div 
+              className="space-y-6"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <div className="grid gap-6">
+                {[
+                  {
+                    icon: Users,
+                    title: "Expert Design Team",
+                    description: "Experienced designers with creative vision and technical expertise to bring your dreams to life"
+                  },
+                  {
+                    icon: Award,
+                    title: "Quality Materials",
+                    description: "Premium quality materials and finishes sourced from trusted suppliers for lasting beauty and durability"
+                  },
+                  {
+                    icon: Clock,
+                    title: "Timely Delivery",
+                    description: "On-time project completion with transparent communication and regular progress updates"
+                  },
+                  {
+                    icon: Star,
+                    title: "Budget-Friendly",
+                    description: "Competitive pricing without compromising on quality, with flexible payment options available"
+                  }
+                ].map((benefit, index) => (
+                  <motion.div 
+                    key={index}
+                    className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                        <benefit.icon className="h-6 w-6 text-primary" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-lg text-gray-900 mb-2">{benefit.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-            </div>
-            <div className="animate-float">
-              <img 
-                src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&h=400&fit=crop" 
-                alt="Interior Design Process"
-                className="rounded-lg shadow-luxury"
-              />
-            </div>
+            </motion.div>
+
+            {/* Right Side - Image */}
+            <motion.div 
+              className="relative"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <div className="relative overflow-hidden rounded-2xl shadow-luxury">
+                <img 
+                  src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&h=500&fit=crop" 
+                  alt="Interior Design Process"
+                  className="w-full h-[500px] object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+                
+                {/* Floating stats card */}
+                <motion.div 
+                  className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-lg"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                      <div className="text-2xl font-bold text-primary">500+</div>
+                      <div className="text-sm text-gray-600">Projects</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-primary">15+</div>
+                      <div className="text-sm text-gray-600">Years</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-primary">4.9★</div>
+                      <div className="text-sm text-gray-600">Rating</div>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
