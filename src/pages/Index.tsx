@@ -205,10 +205,9 @@ const Index = () => {
           poster="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&h=800&fit=crop"
         >
           <source src="https://assets.mixkit.co/videos/preview/mixkit-modern-luxury-living-room-1176-large.mp4" type="video/mp4" />
-          {/* Free stock video from mixkit.co, replace with your own if needed */}
         </video>
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-black/60 to-black/80 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/60 to-primary/80 z-10" />
 
         {/* Centered Content */}
         <div className="relative z-20 w-full max-w-2xl px-4 flex flex-col items-center text-center">
@@ -221,7 +220,7 @@ const Index = () => {
             Transform Your Dream Space
           </motion.h1>
           <motion.p
-            className="text-lg md:text-2xl text-gray-200 mb-8 max-w-xl mx-auto"
+            className="text-lg md:text-2xl text-blue-100 mb-8 max-w-xl mx-auto"
             initial={{ y: 40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.5 }}
@@ -428,7 +427,7 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Transform Your Space?
           </h2>
-          <p className="text-xl text-orange-100 mb-8">
+          <p className="text-xl text-blue-100 mb-8">
             Let's bring your vision to life with our expert interior design services
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
